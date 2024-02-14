@@ -5,12 +5,11 @@ import { Volume2, VolumeX } from 'react-feather';
 import VisuallyHidden from '../VisuallyHidden';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import styles from './Header.module.css';
+import { useVolume } from '../VolumeProvider/VolumeProvider';
 
 function Header() {
   const id = React.useId();
-
-  // TODO: Global state?
-  const soundEnabled = true;
+  const { volume, setVolume } = useVolume();
 
   return (
     <header className={styles.wrapper}>
@@ -21,16 +20,16 @@ function Header() {
 
         <button
           onClick={() => {
-            // TODO: flip `soundEnabled`
+            setVolume(!volume);
           }}
         >
-          {soundEnabled ? (
+          {volume ? (
             <Volume2 />
           ) : (
             <VolumeX />
           )}
           <VisuallyHidden>
-            {soundEnabled
+            {volume
               ? 'Disable sound effects'
               : 'Enable sound effects'}
           </VisuallyHidden>

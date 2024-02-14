@@ -3,10 +3,13 @@ import React from 'react';
 import useSound from 'use-sound';
 
 import styles from './DrumMachine.module.css';
+import { useVolume } from '../VolumeProvider/VolumeProvider';
 
 const SOUND_SRC = '/909-drums.mp3';
 
 function DrumMachine() {
+  const {volume,setVolume}=useVolume();
+
   const [play] = useSound(SOUND_SRC, {
     sprite: {
       kick: [0, 350],
@@ -14,7 +17,7 @@ function DrumMachine() {
       snare: [666, 290],
       cowbell: [968, 200],
     },
-    soundEnabled: true,
+    soundEnabled: volume,
   });
 
   return (
