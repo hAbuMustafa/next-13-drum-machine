@@ -8,7 +8,7 @@ import { useVolume } from '../VolumeProvider/VolumeProvider';
 const SOUND_SRC = '/909-drums.mp3';
 
 function DrumMachine() {
-  const {volume,setVolume}=useVolume();
+  const {volume}=useVolume();
 
   const [play] = useSound(SOUND_SRC, {
     sprite: {
